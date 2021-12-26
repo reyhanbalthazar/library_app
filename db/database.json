@@ -8,6 +8,15 @@
       "role": "admin",
       "status": "Active",
       "book": []
+    },
+    {
+      "username": "test",
+      "email": "test@mail.com",
+      "password": "test",
+      "role": "user",
+      "status": "Active",
+      "book": [],
+      "id": 2
     }
   ]
 }

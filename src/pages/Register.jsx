@@ -66,7 +66,7 @@ class RegisterPage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{marginTop:"100px"}}>
                 <div className="row">
                     <div className="col-3">
 

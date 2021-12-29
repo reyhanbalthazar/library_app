@@ -7,6 +7,9 @@ import LoginPage from "./pages/Login"
 import RegisterPage from "./pages/Register";
 import { connect } from "react-redux";
 import { loginAction } from "./redux/actions/userAction"
+import BookListPage from "./pages/BookList";
+import RentedListPage from "./pages/RentedList";
+import NotFoundPage from "./pages/NotFound";
 
 class App extends React.Component {
   constructor(props) {
@@ -41,12 +44,27 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <NavbarComponent loading={this.state.loading}/>
+        <NavbarComponent loading={this.state.loading} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/aboutus" element={<AboutPage />} />
+          <Route path="/bookslist" element={<BookListPage />} />
+          {
+            this.props.role === "user"
+              ?
+              <>
+                <Route path="/rentedlist" element={<RentedListPage />} />
+              </>
+              : this.props.role === "admin"
+                ?
+                <>
+                </>
+                :
+                <Route path="*" element={<NotFoundPage />} />
+          }
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     )

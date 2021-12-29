@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { loginAction } from '../redux/actions/userAction';
-import { Alert, Button, FormGroup, Input, InputGroup, InputGroupText, Label } from 'reactstrap';
+import { Alert, Button, FormGroup, Input, InputGroup, InputGroupText, Label} from 'reactstrap';
 import axios from 'axios';
 import { API_URL } from '../helper';
-import { Navigate } from 'react-router-dom';
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -13,7 +12,10 @@ class LoginPage extends React.Component {
             passType: "password",
             passText: "Show",
             dataUser: [],
-            isLoggedIn: false   
+            isLoggedIn: false,
+            alertEmptyIsOpen: false,
+            alertNotFoundIsOpen: false,
+            loginAlertIsOpen:false
         }
     }
 
@@ -31,9 +33,36 @@ class LoginPage extends React.Component {
             })
     }
 
-    btLogin = () => {
-        this.props.loginAction(this.emailLogin.value, this.passwordLogin.value)
+    btLogin = async () => {
+        try {
+            let res = await this.props.loginAction(this.emailLogin.value, this.passwordLogin.value)
+            if (this.emailLogin.value === "" || this.passwordLogin.value === "") {
+                this.setState({ alertEmptyIsOpen: true }, () => {
+                    window.setTimeout(() => {
+                        this.setState({ alertEmptyIsOpen: false })
+                    }, 1000)
+                })
+            } else {
+                if (res) {
+                    this.setState({ loginAlertIsOpen: true }, () => {
+                        window.setTimeout(() => {
+                            this.setState({ loginAlertIsOpen: false })
+                            window.location = 'http://localhost:3000/';
+                        }, 1000)
+                    })
+                } else {
+                    this.setState({ alertNotFoundIsOpen: true }, () => {
+                        window.setTimeout(() => {
+                            this.setState({ alertNotFoundIsOpen: false })
+                        }, 1000)
+                    })
+                }
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
+
 
     showHidePassword = () => {
         if (this.state.passType === "password") {
@@ -50,10 +79,9 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        if (this.props.iduser) {
-            alert("login success")
-            return <Navigate to="/" />
-        }
+        // if (this.props.iduser) {
+        //     return <Navigate to="/" />
+        // }
         return (
             <div style={{ marginTop: "100px" }}>
                 <div className="row">
@@ -77,6 +105,29 @@ class LoginPage extends React.Component {
                         <FormGroup style={{ textAlign: "center" }}>
                             <Button onClick={this.btLogin} color="primary" style={{ width: "200px" }}>LOGIN</Button>
                         </FormGroup>
+                        <div style={{ textAlign: "center", display:"flex", justifyContent:"center" }}>
+                            <Alert
+                                color="danger"
+                                isOpen={this.state.alertEmptyIsOpen}
+                                style={{ width: "500px" }}
+                            >
+                                EMAIL AND PASSWORD CANNOT EMPTY
+                            </Alert>
+                            <Alert
+                                color="danger"
+                                isOpen={this.state.alertNotFoundIsOpen}
+                                style={{ width: "500px" }}
+                            >
+                                ACCOUNT NOT FOUND, PLEASE REGISTER
+                            </Alert>
+                            <Alert
+                                color="success"
+                                isOpen={this.state.loginAlertIsOpen}
+                                style={{ width: "500px" }}
+                            >
+                                LOGIN SUCCESS, NOW DIRECTING TO HOMEPAGE
+                            </Alert>
+                        </div>
                     </div>
                     <div className="col-3">
 
@@ -90,7 +141,7 @@ class LoginPage extends React.Component {
 const mapToProps = (state) => {
     return {
         iduser: state.userReducer.id,
-        email:state.userReducer.email
+        email: state.userReducer.email
     }
 }
 

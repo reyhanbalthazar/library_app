@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Collapse, Nav, Navbar, NavbarBrand, NavItem, Label, NavbarText, Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { Collapse, Nav, Navbar, NavbarBrand, NavItem, Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import Image from 'react-bootstrap/Image'
 import { connect } from "react-redux";
 import { logoutAction } from "../redux/actions/userAction";
@@ -15,7 +15,7 @@ class NavbarComponent extends React.Component {
 
     render() {
         return (
-            <Navbar className="shadow p-2 mb-5 rounded" style={{ backgroundColor: "darkgrey" }} light expand="md" fixed="top" >
+            <Navbar className="shadow p-2 mb-5 rounded" style={{ backgroundColor: "#F0F3F5" }} light expand="md" fixed="top" >
                 <NavbarBrand>
                     <Link to="/">
                         <Image alt="..." width="50px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREStAIJwirPfpVbaQy49IvQaCZ6li_BR2TvA&usqp=CAU" />
@@ -26,7 +26,10 @@ class NavbarComponent extends React.Component {
                         this.props.username
                             ?
                             <>
-                                <Nav className="me-auto" >
+                                <Nav className="me-auto">
+
+                                </Nav>
+                                <Nav>
                                     <NavItem>
                                         <Link to="/bookslist" className="nav-link" style={{ color: "#2d3436" }}>
                                             Books
@@ -59,6 +62,9 @@ class NavbarComponent extends React.Component {
                             </>
                             :
                             <>
+                                <Nav className="me-auto">
+
+                                </Nav>
                                 <Nav className="me-auto" >
                                     <NavItem>
                                         <Link to="/bookslist" className="nav-link" style={{ color: "#2d3436" }}>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Button, FormGroup, Input, InputGroup, InputGroupText, Label } from 'reactstrap';
+import { Button, FormGroup, Input, InputGroup, InputGroupText, Label, Alert } from 'reactstrap';
 import { API_URL } from '../helper'
 
 class RegisterPage extends React.Component {
@@ -8,7 +8,11 @@ class RegisterPage extends React.Component {
         super(props);
         this.state = {
             passType: "password",
-            passText: "Show"
+            passText: "Show",
+            emptyAlertIsOpen: false,
+            emailAlertIsOpen: false,
+            passwordAlertIsOpen: false,
+            registerAlertIsOpen: false
         }
     }
 
@@ -18,14 +22,13 @@ class RegisterPage extends React.Component {
     }
 
     btRegis = () => {
-        if (this.username.value === "") {
-            alert("Username empty")
-        } else if (this.email.value === "") {
-            alert("email empty")
-        } else if (this.password.value === "") {
-            alert("password empty")
-        } else if (this.confPassword.value === "") {
-            alert("confirmation password emtry")
+        if (this.username.value === "" || this.email.value === "" || this.password.value === "" || this.confPassword.value === "") {
+            this.setState({ emptyAlertIsOpen: true }, () => {
+                window.setTimeout(() => {
+                    this.setState({ emptyAlertIsOpen: false })
+                }, 1000)
+            })
+            // alert("Username email password and conf password can't empty")
         } else {
             if (this.password.value === this.confPassword.value) {
                 if (this.email.value.includes("@")) {
@@ -36,16 +39,31 @@ class RegisterPage extends React.Component {
                         role: "user",
                         status: "Active",
                         book: []
-                    }).then((response)=> {
-                        alert("register success ✔")
-                    }).catch((error)=> {
+                    }).then((response) => {
+                        this.setState({ registerAlertIsOpen: true }, () => {
+                            window.setTimeout(() => {
+                                this.setState({ registerAlertIsOpen: false })
+                                window.location = 'http://localhost:3000/login';
+                            }, 2000)
+                        })
+                    }).catch((error) => {
                         console.log(error)
                     })
                 } else {
-                    alert("email didnt contain @")
+                    this.setState({ emailAlertIsOpen: true }, () => {
+                        window.setTimeout(() => {
+                            this.setState({ emailAlertIsOpen: false })
+                        }, 1000)
+                    })
+                    // alert("email didnt contain @")
                 }
             } else {
-                alert("password didnt match")
+                this.setState({ passwordAlertIsOpen: true }, () => {
+                    window.setTimeout(() => {
+                        this.setState({ passwordAlertIsOpen: false })
+                    }, 1000)
+                })
+                // alert("password didnt match")
             }
         }
     }
@@ -66,7 +84,7 @@ class RegisterPage extends React.Component {
 
     render() {
         return (
-            <div style={{marginTop:"100px"}}>
+            <div style={{ marginTop: "100px" }}>
                 <div className="row">
                     <div className="col-3">
 
@@ -99,6 +117,36 @@ class RegisterPage extends React.Component {
                         <FormGroup style={{ textAlign: "center" }}>
                             <Button color="primary" style={{ width: "200px" }} onClick={this.btRegis}>REGISTER</Button>
                         </FormGroup>
+                        <div style={{ textAlign: "center", display: "flex", justifyContent: "center" }}>
+                            <Alert
+                                color="danger"
+                                style={{ width: "500px" }}
+                                isOpen={this.state.emptyAlertIsOpen}
+                            >
+                                USERNAME, EMAIL, PASSWORD & CONFIRMATION PASSWORD CANNOT BE EMPTY
+                            </Alert>
+                            <Alert
+                                color="danger"
+                                style={{ width: "500px" }}
+                                isOpen={this.state.emailAlertIsOpen}
+                            >
+                                EMAIL INCORRECT, EMAIL MUST CONTAIN @
+                            </Alert>
+                            <Alert
+                                color="danger"
+                                style={{ width: "500px" }}
+                                isOpen={this.state.passwordAlertIsOpen}
+                            >
+                                PASSWORD DID NOT MATCH
+                            </Alert>
+                            <Alert
+                                color="success"
+                                style={{ width: "500px" }}
+                                isOpen={this.state.registerAlertIsOpen}
+                            >
+                                REGISTER SUCCESS, NOW DIRECTING TO LOGIN PAGE
+                            </Alert>
+                        </div>
 
                     </div>
                     <div className="col-3">

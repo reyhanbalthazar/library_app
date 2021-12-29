@@ -1,5 +1,4 @@
 import React from 'react'
-import { Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Button, FormGroup, Label, Modal, ModalBody, ModalHeader } from 'reactstrap';
 
@@ -18,24 +17,28 @@ class ModalRent extends React.Component {
                 <ModalHeader style={{justifyContent:"center"}}>Rent This Book?</ModalHeader>
                 <ModalBody style={{textAlign:"center"}}>
                     <div>
-                        <img src={image} width="100%" />
+                        <img alt='...' src={image} width="50%" />
                     </div>
+                    <hr/>
                     <FormGroup>
-                        <Label style={{fontWeight:"bold", fontSize:"20"}}>{title}</Label>
+                        <Label style={{fontWeight:"bold", fontSize:"25px"}}>{title}</Label>
                     </FormGroup>
+                    <hr/>
                     <FormGroup>
                         <Label>{author}</Label>
                     </FormGroup>
+                    <hr/>
                     <FormGroup>
                         <Label>{year}</Label>
                     </FormGroup>
+                    <hr/>
                     <FormGroup>
                         <Label>{category}</Label>
                     </FormGroup>
-                    <FormGroup className="border rounded p-5">
+                    <FormGroup className="border rounded p-3">
                         <Label style={{fontWeight:"bold"}}>Description</Label>
                         <Label>{desc}</Label>
-                    </FormGroup>
+                    </FormGroup> 
                     <FormGroup>
                         <Button>Rent</Button>
                     </FormGroup>

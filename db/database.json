@@ -15,7 +15,40 @@
       "password": "test",
       "role": "user",
       "status": "Active",
-      "book": [],
+      "book": [
+        {
+          "title": "The Psychology of Money",
+          "author": "Morgan Housel",
+          "image": "https://images.tokopedia.net/img/cache/900/VqbcmM/2021/1/28/053a8508-9fad-42be-822d-6f9c8583135f.png",
+          "category": "Business",
+          "desc": "Doing well with money isn't necessarily about what you know. It's about how you behave. And behavior is hard to teach, even to really smart people.",
+          "day": 3
+        },
+        {
+          "title": "The ALCHEMIST",
+          "author": "Paulo Coelho",
+          "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/12/10/batch-upload/batch-upload_5163a8c7-7ab2-4488-922c-6d2e69d7c742.jpeg",
+          "category": "Fiction",
+          "desc": "From his home in Spain he journeys to the markets of Tangiers and across the Egyptian desert to a fateful encounter with the alchemist.The story of the treasures Santiago finds along the way teaches usas only a few stories have doneabout the essential wisdom of listening to our heartslearning to read the omens strewn along life's pathandabove allfollowing our dreams.",
+          "day": 7
+        },
+        {
+          "title": "Norwegian Wood",
+          "author": "Haruki Murakami",
+          "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/10/8/2573453/2573453_5f85cd0b-b903-47f3-9ca8-f38c0b7f91fb.jpeg",
+          "category": "Fiction",
+          "desc": "First American Publication This stunning and elegiac novel by the author of the internationally acclaimed Wind-Up Bird Chronicle has sold over 4 million copies in Japan and is now available to American audiences for the first time. It is sure to be a literary event.",
+          "day": 14
+        },
+        {
+          "title": "Tuesdays with Morrie",
+          "author": "Mitch Albom",
+          "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/12/10/batch-upload/batch-upload_3b2a28f7-1812-42f3-ba8b-f1f0935cd497.jpeg",
+          "category": "Fiction",
+          "desc": "Maybe it was a grandparentor a teacheror a colleague.  Someone olderpatient and wisewho understood you when you were young and searchinghelped you see the world as a more profound placegave you sound advice to help you make your way through it.",
+          "day": 7
+        }
+      ],
       "id": 2
     },
     {
@@ -36,7 +69,18 @@
       "image": "https://images.tokopedia.net/img/cache/900/VqbcmM/2021/1/28/053a8508-9fad-42be-822d-6f9c8583135f.png",
       "category": "Business",
       "desc": "Doing well with money isn't necessarily about what you know. It's about how you behave. And behavior is hard to teach, even to really smart people.",
-      "year": "2020"
+      "year": "2020",
+      "option": [
+        {
+          "day": 3
+        },
+        {
+          "day": 7
+        },
+        {
+          "day": 14
+        }
+      ]
     },
     {
       "id": 2,
@@ -45,7 +89,18 @@
       "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/12/10/batch-upload/batch-upload_5163a8c7-7ab2-4488-922c-6d2e69d7c742.jpeg",
       "category": "Fiction",
       "desc": "From his home in Spain he journeys to the markets of Tangiers and across the Egyptian desert to a fateful encounter with the alchemist.The story of the treasures Santiago finds along the way teaches usas only a few stories have doneabout the essential wisdom of listening to our heartslearning to read the omens strewn along life's pathandabove allfollowing our dreams.",
-      "year": "2014"
+      "year": "2014",
+      "option": [
+        {
+          "day": 3
+        },
+        {
+          "day": 7
+        },
+        {
+          "day": 14
+        }
+      ]
     },
     {
       "id": 3,
@@ -54,7 +109,18 @@
       "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/10/8/2573453/2573453_5f85cd0b-b903-47f3-9ca8-f38c0b7f91fb.jpeg",
       "category": "Fiction",
       "desc": "First American Publication This stunning and elegiac novel by the author of the internationally acclaimed Wind-Up Bird Chronicle has sold over 4 million copies in Japan and is now available to American audiences for the first time. It is sure to be a literary event.",
-      "year": "2011"
+      "year": "2011",
+      "option": [
+        {
+          "day": 3
+        },
+        {
+          "day": 7
+        },
+        {
+          "day": 14
+        }
+      ]
     },
     {
       "id": 4,
@@ -63,7 +129,18 @@
       "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/10/10/2573453/2573453_df8ff24a-8cda-4076-b078-ea7882b3b779.jpeg",
       "category": "Fiction",
       "desc": "In a small back alley in Tokyo, there is a cafe which has been serving carefully brewed coffee for more than one hundred years. But this coffee shop offers its customers a unique experience: the chance to travel back in time.",
-      "year": "2019"
+      "year": "2019",
+      "option": [
+        {
+          "day": 3
+        },
+        {
+          "day": 7
+        },
+        {
+          "day": 14
+        }
+      ]
     },
     {
       "id": 5,
@@ -72,7 +149,18 @@
       "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/10/7/2573453/2573453_9485bcfd-c631-4d2e-a28c-cf90d8c7d57e.jpeg",
       "category": "Business",
       "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "year": "2014"
+      "year": "2014",
+      "option": [
+        {
+          "day": 3
+        },
+        {
+          "day": 7
+        },
+        {
+          "day": 14
+        }
+      ]
     },
     {
       "id": 6,
@@ -81,7 +169,18 @@
       "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/10/8/2573453/2573453_a5418b63-ba16-4776-9659-5c5c1d0c09dc.jpeg",
       "category": "Business",
       "desc": "The Courage to be Disliked shows you how to unlock the power within yourself to become your best and truest self, change your future and find lasting happiness. Using the theories of Alfred Adler, one of the three giants of 19th century psychology alongside Freud and Jung, the authors explain how we are all free to determine our own future free of the shackles of past experiences, doubts and the expectations of others. It's a philosophy that's profoundly liberating, allowing us to develop the courage to change, and to ignore the limitations that we and those around us can place on ourselves.",
-      "year": "2019"
+      "year": "2019",
+      "option": [
+        {
+          "day": 3
+        },
+        {
+          "day": 7
+        },
+        {
+          "day": 14
+        }
+      ]
     },
     {
       "id": 7,
@@ -90,7 +189,18 @@
       "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/10/8/2573453/2573453_6024112d-e5cf-445c-b0ec-bbcb35e97f45.jpeg",
       "category": "Business",
       "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "year": "2016"
+      "year": "2016",
+      "option": [
+        {
+          "day": 3
+        },
+        {
+          "day": 7
+        },
+        {
+          "day": 14
+        }
+      ]
     },
     {
       "id": 8,
@@ -99,7 +209,18 @@
       "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/12/10/batch-upload/batch-upload_3b2a28f7-1812-42f3-ba8b-f1f0935cd497.jpeg",
       "category": "Fiction",
       "desc": "Maybe it was a grandparentor a teacheror a colleague.  Someone olderpatient and wisewho understood you when you were young and searchinghelped you see the world as a more profound placegave you sound advice to help you make your way through it.",
-      "year": "1998"
+      "year": "1998",
+      "option": [
+        {
+          "day": 3
+        },
+        {
+          "day": 7
+        },
+        {
+          "day": 14
+        }
+      ]
     },
     {
       "id": 9,
@@ -108,7 +229,18 @@
       "image": "https://images.tokopedia.net/img/cache/900/product-1/2020/10/2/23287724/23287724_dac3077b-d723-46d4-b20c-e0290f69a61b_800_800",
       "category": "Psychology",
       "desc": "What does everyone in the modern world need to know? Renowned psychologist Jordan B. Peterson's answer to this most difficult of questions uniquely combines the hard-won truths of ancient tradition with the stunning revelations of cutting-edge scientific research.Humoroussurprising and informativeDr. Peterson tells us why skateboarding boys and girls must be left alonewhat terrible fate awaits those who criticize too easilyand why you should always pet a cat when you meet one on the street.",
-      "year": "2019"
+      "year": "2019",
+      "option": [
+        {
+          "day": 3
+        },
+        {
+          "day": 7
+        },
+        {
+          "day": 14
+        }
+      ]
     }
   ]
 }

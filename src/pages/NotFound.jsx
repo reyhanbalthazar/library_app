@@ -8,7 +8,7 @@ class NotFoundPage extends React.Component {
     render() { 
         return ( 
             <div style={{display:"flex", justifyContent:"center", marginTop:"20vh"}}>
-                <img src="https://cdn-2.tstatic.net/banjarmasin/foto/bank/images/404-not-found-error_20170222_103510.jpg" />
+                <img alt='...' src="https://cdn-2.tstatic.net/banjarmasin/foto/bank/images/404-not-found-error_20170222_103510.jpg" />
             </div>
          );
     }

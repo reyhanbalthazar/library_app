@@ -24,3 +24,10 @@ export const logoutAction = () => {
         type: "LOGOUT"
     }
 }
+
+export const updateUserBook = (data) => {
+    return {
+        type: "UPDATE_BOOK_USER",
+        payload: data
+    }
+}

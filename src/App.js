@@ -7,9 +7,11 @@ import LoginPage from "./pages/Login"
 import RegisterPage from "./pages/Register";
 import { connect } from "react-redux";
 import { loginAction } from "./redux/actions/userAction"
+import { getBookAction } from "./redux/actions/bookAction";
 import BookListPage from "./pages/BookList";
 import RentedListPage from "./pages/RentedList";
 import NotFoundPage from "./pages/NotFound";
+import RentPage from "./pages/Rent";
 
 class App extends React.Component {
   constructor(props) {
@@ -21,6 +23,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.keepLogin()
+    this.props.getBookAction()
   }
 
   keepLogin = async () => {
@@ -55,6 +58,7 @@ class App extends React.Component {
             this.props.role === "user"
               ?
               <>
+                <Route path="/rent" element={<RentPage />} />
                 <Route path="/rentedlist" element={<RentedListPage />} />
               </>
               : this.props.role === "admin"
@@ -77,4 +81,4 @@ const mapToProps = (state) => {
   }
 }
 
-export default connect(mapToProps, { loginAction })(App);
+export default connect(mapToProps, { loginAction, getBookAction })(App);

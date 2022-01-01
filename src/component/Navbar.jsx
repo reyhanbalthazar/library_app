@@ -51,12 +51,21 @@ class NavbarComponent extends React.Component {
                                         Hello, {this.props.username}
                                     </DropdownToggle>
                                     <DropdownMenu>
-                                        <DropdownItem onClick={() => {
-                                            localStorage.removeItem("data");
-                                            this.props.logoutAction();
-                                        }}>
-                                            LOGOUT
+                                        <DropdownItem>
+                                            <Link to="/rentedlist" className="nav-link" style={{ color: "#2d3436" }}>
+                                                Rented List
+                                            </Link>
                                         </DropdownItem>
+                                        <div style={{ borderTopWidth: 2 }}>
+                                            <DropdownItem onClick={() => {
+                                                localStorage.removeItem("data");
+                                                this.props.logoutAction();
+                                            }}
+                                            style={{borderTop:"1px solid"}}
+                                            >
+                                                LOGOUT
+                                            </DropdownItem>
+                                        </div>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                             </>

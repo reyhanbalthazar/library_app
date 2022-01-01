@@ -4,10 +4,10 @@ const INITIAL_STATE = {
 
 export const bookReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case "GET_DATA_BOOK":
-            console.log("GET DATA BOOKS", action.payload)
+        case "GET_BOOKS_SUCCESS":
+            console.log("GET BOOK bookReducer", action.payload)
             return { ...state, booksList: action.payload };
         default:
-            return state
+            return state;
     }
 }

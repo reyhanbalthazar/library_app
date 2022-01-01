@@ -10,7 +10,7 @@ class RentPage extends React.Component {
         super(props);
         this.state = {
             detail: {},
-            selectedDay: {}
+            selectedDay: {},
         }
     }
 
@@ -36,7 +36,9 @@ class RentPage extends React.Component {
                 category: detail.category,
                 desc: detail.desc,
                 year: detail.tear,
-                day: selectedDay.day
+                startDate: new Date(Date.now()).toLocaleDateString(),
+                day: selectedDay.day,
+                endDate: new Date(Date.now() + (3600 * 1000 * (24 * selectedDay.day))).toLocaleDateString(),
             }
             let temp = [...this.props.book]
             temp.push(dataBook)
@@ -46,7 +48,7 @@ class RentPage extends React.Component {
                 }).then((response) => {
                     console.log("data cart", response.data)
                     this.props.updateUserBook(response.data.book)
-                    window.location = 'http://localhost:3000/rentedlist'; 
+                    window.location = 'http://localhost:3000/rentedlist';
                 }).catch((error) => {
                     console.log(error)
                 })

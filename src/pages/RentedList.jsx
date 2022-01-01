@@ -36,11 +36,9 @@ class RentedListPage extends React.Component {
         return this.state.detail.book &&
             this.state.detail.book.map((value, index) => {
                 return (
-
                     <tbody style={{ textAlign: "center", margin: "auto" }}>
                         <tr>
                             <td width="50px">
-                                {/* <img alt='...' width="200px" src={value.image} /> */}
                                 {number += 1}
                             </td>
                             <td width="200px">
@@ -54,6 +52,12 @@ class RentedListPage extends React.Component {
                             </td>
                             <td width="200px">
                                 {value.day} Day
+                            </td>
+                            <td width="200px">
+                                {value.startDate}
+                            </td>
+                            <td width="200px">
+                                {value.endDate}
                             </td>
                             <td width="200px">
                                 <div style={{ display: "flex", justifyContent: "space-around" }}>
@@ -93,6 +97,12 @@ class RentedListPage extends React.Component {
                                 </th>
                                 <th>
                                     Day Rent
+                                </th>
+                                <th>
+                                    Start Date
+                                </th>
+                                <th>
+                                    End Date
                                 </th>
                                 <th>
                                     Action

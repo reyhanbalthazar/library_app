@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormGroup, Label, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { FormGroup, Label, Modal, ModalBody } from 'reactstrap';
 
 class ModalRent extends React.Component {
     constructor(props) {
@@ -13,7 +13,6 @@ class ModalRent extends React.Component {
         let { title, author, image, category, desc, year } = this.props.detailBook
         return (
             <Modal isOpen={this.props.openModal} toggle={this.props.toggleModal}>
-                <ModalHeader style={{ justifyContent: "center" }}>Rent This Book?</ModalHeader>
                 <ModalBody style={{ textAlign: "center" }}>
                     <div>
                         <img alt='...' src={image} width="100%" />

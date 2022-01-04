@@ -2,12 +2,12 @@ import axios from "axios";
 import { API_URL } from "../../helper";
 
 export const getBookAction = (search = null, searchCategory = null) => {
-    console.log("GET DATA BOOKS ACTION", search)
+    // console.log("GET DATA BOOKS ACTION", search)
     return async (dispatch) => {
         try {
             let res;
-            console.log("cek SEARCH Title", search)
-            console.log("cek SEARCH Category", searchCategory)
+            // console.log("cek SEARCH Title", search)
+            // console.log("cek SEARCH Category", searchCategory)
             if (search) {
                 console.log("cek SEARCH Title", search)
                 res = await axios.get(`${API_URL}/books?title=${search}`)

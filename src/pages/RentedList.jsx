@@ -80,7 +80,7 @@ class RentedListPage extends React.Component {
                     toggleModal={() => this.setState({ openModal: !this.state.openModal })}
                 />
                 <div className='container' style={{ marginTop: "20vh", width: "99vw" }}>
-                    <Table bordered>
+                    <Table bordered hover>
                         <thead style={{ textAlign: "center" }}>
                             <tr>
                                 <th>

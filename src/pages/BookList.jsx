@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { API_URL } from '../helper';
-import { Card, CardBody, CardTitle, CardSubtitle, CardGroup, Button, ButtonGroup, Input, InputGroup } from 'reactstrap'
+import { Card, CardBody, CardTitle, CardSubtitle, CardGroup, Button, ButtonGroup, Input, InputGroup, Label, Collapse } from 'reactstrap'
 import { connect } from 'react-redux';
 import ModalRent from '../component/ModalRent';
 import { Link } from 'react-router-dom';
@@ -11,31 +11,32 @@ class BookListPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            books: [],
+            booksCategory: [],
             detailBook: {},
             selectedIdx: null,
             openModal: false,
-            page: 1
+            page: 1,
+            collapseIsOpen: false
         }
     }
 
-    componentDidMount() {
-        console.log("book list", this.props.booksList)
-        this.getData()
-    }
 
     getData = () => {
-        axios.get(`${API_URL}/books`)
+        axios.get(`${API_URL}/booksCategory`)
             .then((response) => {
-                console.log("GET DATA BOOKS", response.data)
-                this.setState({ books: response.data })
+                console.log("response.data booksCategory", response.data)
+                this.setState({ booksCategory: response.data })
+                console.log("this.state.booksCategory", this.state.booksCategory)
             }).catch((error) => {
                 console.log(error)
             })
     }
 
+    componentDidMount() {
+        this.getData()
+    }
+
     btSort = () => {
-        console.log(this.inSearchSort.value)
         if (this.inSearchSort.value === "nama-asc") {
             this.props.getBookAction({
                 namaAsc: this.inSearchSort.value
@@ -53,6 +54,7 @@ class BookListPage extends React.Component {
         this.props.getBookAction()
         this.inSearchName.value = ""
         this.inSearchCategory.value = ""
+        this.inSearchSort.value = ""
     }
 
     btSearch = () => {
@@ -62,24 +64,48 @@ class BookListPage extends React.Component {
 
     printSort = () => {
         return (
-            <div className='container'>
-                <div style={{ display: "flex", justifyContent: "space-around", marginTop: "100px" }}>
-                    <InputGroup style={{ width: "350px", float: "left" }}>
-                        <Input type="text" id="text" placeholder="Search By Title"
-                            innerRef={(element) => this.inSearchName = element} />
-                        <Input type="text" id="text" placeholder="Search By Category"
-                            innerRef={(element) => this.inSearchCategory = element} />
-                    </InputGroup>
-                    <Input type="select" style={{ width: "250px", float: "right" }} innerRef={(element) => this.inSearchSort = element}>
-                        <option value="nama-asc">A-Z</option>
-                        <option value="nama-desc">Z-A</option>
-                        <option value="id-asc">Reset</option>
-                    </Input>
-                    <Button color="primary" onClick={this.btSort}>Sort</Button>
+            <div className='container' style={{ marginTop: "20px" }}>
+                <div style={{ display: "flex", justifyContent: "space-around", marginTop: "20px" }}>
+                    <Label style={{ width: "250px" }}>Search by Title</Label>
+                    <Label style={{ width: "250px" }}>Filter By Category</Label>
+                    <Label style={{ width: "250px" }}>Sort</Label>
+                    <Label></Label>
                 </div>
-                <div style={{ float: "right", marginTop: "5px" }}>
-                    <Button outline color="warning" onClick={this.btReset}>Reset</Button>
-                    <Button color="primary" onClick={this.btSearch}>Filter</Button>
+                <div style={{ display: "flex", justifyContent: "space-around" }}>
+                    <div style={{ width: "250px", display: "flex" }}>
+                        <InputGroup style={{ width: "250px", float: "left" }}>
+                            <Input type="text" id="text" placeholder="Search By Title"
+                                innerRef={(element) => this.inSearchName = element} />
+                        </InputGroup>
+                        <Button color="primary" onClick={this.btSearch}>Search</Button>
+                    </div>
+                    <div style={{ width: "250px", display: "flex" }}>
+                        <Input type="select" style={{ width: "250px", float: "right" }} innerRef={(element) => this.inSearchCategory = element}>
+                            <option> </option>
+                            {
+                                this.state.booksCategory &&
+                                this.state.booksCategory.map((value, index) => {
+                                    return <>
+                                        <option key={index} value={value.category}>{value.category}</option>
+                                    </>
+
+                                })
+                            }
+                        </Input>
+                        <Button color="primary" onClick={this.btSearch}>Filter</Button>
+                    </div>
+                    <div style={{ width: "250px", display: "flex" }}>
+                        <Input type="select" innerRef={(element) => this.inSearchSort = element}>
+                            <option> </option>
+                            <option value="nama-asc">A-Z</option>
+                            <option value="nama-desc">Z-A</option>
+                            <option value="id-asc">Reset</option>
+                        </Input>
+                        <Button style={{ marginLeft: "10px" }} color="primary" onClick={this.btSort}>Sort</Button>
+                    </div>
+                    <div>
+                        <Button outline color="warning" onClick={this.btReset}>Reset</Button>
+                    </div>
                 </div>
             </div>
         )
@@ -123,7 +149,7 @@ class BookListPage extends React.Component {
 
     printBtPagination = () => {
         let btn = []
-        for (let i = 0; i < Math.ceil(this.state.books.length / 6); i++) {
+        for (let i = 0; i < Math.ceil(this.props.booksList.length / 6); i++) {
             btn.push(<Button outline color="primary"
                 disabled={this.state.page === i + 1 ? true : false}
                 onClick={() => this.setState({ page: i + 1 })} >
@@ -141,10 +167,26 @@ class BookListPage extends React.Component {
                     openModal={this.state.openModal}
                     toggleModal={() => this.setState({ openModal: !this.state.openModal })}
                 />
-                <div>
-                    {this.printSort()}
-                </div>
                 <div className="row" style={{ justifyContent: "center", width: "99vw" }} >
+                    <div style={{ justifyContent: "center", display: "flex" }}>
+                        <p style={{ marginTop: "30px" }} onClick={() => this.setState({ collapseIsOpen: !this.state.collapseIsOpen })}>
+                            {
+                                this.state.collapseIsOpen === true
+                                    ?
+                                    <Button onClick={this.btReset} color='warning' >
+                                        Close Search
+                                    </Button>
+                                    :
+                                    <Button color='primary'>
+                                        Seach Book
+                                    </Button>
+
+                            }
+                        </p>
+                    </div>
+                    <Collapse isOpen={this.state.collapseIsOpen}>
+                        {this.printSort()}
+                    </Collapse>
                     {this.printBooks()}
                 </div>
                 <div className="text-center">
@@ -152,13 +194,12 @@ class BookListPage extends React.Component {
                         {this.printBtPagination()}
                     </ButtonGroup>
                 </div>
-            </div>
+            </div >
         );
     }
 }
 
 const mapToProps = ({ bookReducer }) => {
-    console.table(bookReducer.booksList)
     return {
         booksList: bookReducer.booksList
     }

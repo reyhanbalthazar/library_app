@@ -12,6 +12,7 @@ import BookListPage from "./pages/BookList";
 import RentedListPage from "./pages/RentedList";
 import NotFoundPage from "./pages/NotFound";
 import RentPage from "./pages/Rent";
+import BookManagementPage from "./pages/BookManagement";
 
 class App extends React.Component {
   constructor(props) {
@@ -64,6 +65,7 @@ class App extends React.Component {
               : this.props.role === "admin"
                 ?
                 <>
+                  <Route path="/bookmanagement" element={<BookManagementPage />} />
                 </>
                 :
                 <Route path="*" element={<NotFoundPage />} />

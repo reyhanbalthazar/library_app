@@ -9,7 +9,7 @@ class NavbarComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            
         }
     }
 
@@ -23,7 +23,7 @@ class NavbarComponent extends React.Component {
                 </NavbarBrand>
                 <Collapse navbar>
                     {
-                        this.props.username
+                        this.props.role === "user"
                             ?
                             <>
                                 <Nav className="me-auto">
@@ -33,11 +33,6 @@ class NavbarComponent extends React.Component {
                                     <NavItem>
                                         <Link to="/bookslist" className="nav-link" style={{ color: "#2d3436" }}>
                                             Books
-                                        </Link>
-                                    </NavItem>
-                                    <NavItem>
-                                        <Link to="/rentedlist" className="nav-link" style={{ color: "#2d3436" }}>
-                                            Rented List
                                         </Link>
                                     </NavItem>
                                     <NavItem>
@@ -61,7 +56,7 @@ class NavbarComponent extends React.Component {
                                                 localStorage.removeItem("data");
                                                 this.props.logoutAction();
                                             }}
-                                            style={{borderTop:"1px solid"}}
+                                                style={{ borderTop: "1px solid" }}
                                             >
                                                 LOGOUT
                                             </DropdownItem>
@@ -70,31 +65,73 @@ class NavbarComponent extends React.Component {
                                 </UncontrolledDropdown>
                             </>
                             :
-                            <>
-                                <Nav className="me-auto">
+                            this.props.role === "admin" ?
+                                <>
 
-                                </Nav>
-                                <Nav className="me-auto" >
-                                    <NavItem>
-                                        <Link to="/bookslist" className="nav-link" style={{ color: "#2d3436" }}>
-                                            Books
+                                    <Nav className="me-auto">
+
+                                    </Nav>
+                                    <Nav>
+                                        <NavItem>
+                                            <Link to="/bookslist" className="nav-link" style={{ color: "#2d3436" }}>
+                                                Books
+                                            </Link>
+                                        </NavItem>
+                                        <NavItem>
+                                            <Link to="/bookmanagement" className="nav-link" style={{ color: "#2d3436" }}>
+                                                Book Management
+                                            </Link>
+                                        </NavItem>
+                                        <NavItem>
+                                            <Link to="/aboutus" className="nav-link" style={{ color: "#2d3436" }}>
+                                                About us
+                                            </Link>
+                                        </NavItem>
+                                    </Nav>
+                                    <UncontrolledDropdown style={{ marginLeft: "auto" }}>
+                                        <DropdownToggle caret nav size="sm" className="d-flex align-items-center" style={{ color: "#2d3436" }}>
+                                            Hello, {this.props.username}
+                                        </DropdownToggle>
+                                        <DropdownMenu>
+                                            <div>
+                                                <DropdownItem onClick={() => {
+                                                    localStorage.removeItem("data");
+                                                    this.props.logoutAction();
+                                                }}
+                                                    style={{ borderTop: "1px solid" }}
+                                                >
+                                                    LOGOUT
+                                                </DropdownItem>
+                                            </div>
+                                        </DropdownMenu>
+                                    </UncontrolledDropdown>
+                                </>
+                                :
+                                <>
+                                    <Nav className="me-auto">
+
+                                    </Nav>
+                                    <Nav className="me-auto" >
+                                        <NavItem>
+                                            <Link to="/bookslist" className="nav-link" style={{ color: "#2d3436" }}>
+                                                Books
+                                            </Link>
+                                        </NavItem>
+                                        <NavItem>
+                                            <Link to="/aboutus" className="nav-link" style={{ color: "#2d3436" }}>
+                                                About us
+                                            </Link>
+                                        </NavItem>
+                                    </Nav>
+                                    <Nav>
+                                        <Link to="/login" style={{ marginRight: "10px" }}>
+                                            <Button style={{ width: "100px" }}>Login</Button>
                                         </Link>
-                                    </NavItem>
-                                    <NavItem>
-                                        <Link to="/aboutus" className="nav-link" style={{ color: "#2d3436" }}>
-                                            About us
+                                        <Link to="/register">
+                                            <Button style={{ width: "100px" }} >Register</Button>
                                         </Link>
-                                    </NavItem>
-                                </Nav>
-                                <Nav>
-                                    <Link to="/login" style={{ marginRight: "10px" }}>
-                                        <Button style={{ width: "100px" }}>Login</Button>
-                                    </Link>
-                                    <Link to="/register">
-                                        <Button style={{ width: "100px" }} >Register</Button>
-                                    </Link>
-                                </Nav>
-                            </>
+                                    </Nav>
+                                </>
                     }
                 </Collapse>
             </Navbar>

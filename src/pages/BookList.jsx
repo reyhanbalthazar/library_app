@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import { API_URL } from '../helper';
 import { Card, CardBody, CardTitle, CardSubtitle, CardGroup, Button, ButtonGroup, Input, InputGroup, Label, Collapse } from 'reactstrap'
@@ -64,23 +64,19 @@ class BookListPage extends React.Component {
 
     printSort = () => {
         return (
-            <div className='container' style={{ marginTop: "20px" }}>
-                <div style={{ display: "flex", justifyContent: "space-around", marginTop: "20px" }}>
-                    <Label style={{ width: "250px" }}>Search by Title</Label>
-                    <Label style={{ width: "250px" }}>Filter By Category</Label>
-                    <Label style={{ width: "250px" }}>Sort</Label>
-                    <Label></Label>
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-around" }}>
-                    <div style={{ width: "250px", display: "flex" }}>
-                        <InputGroup style={{ width: "250px", float: "left" }}>
-                            <Input type="text" id="text" placeholder="Search By Title"
-                                innerRef={(element) => this.inSearchName = element} />
-                        </InputGroup>
+            <div style={{ marginTop: "20px" }}>
+                <div className="row" style={{ width: "250px", display: "flex" }}>
+                    <InputGroup style={{ width: "250px", float: "left" }}>
+                        <Label style={{ width: "250px" }}>Search by Title</Label>
+                        <Input type="text" id="text" placeholder="Search By Title"
+                            innerRef={(element) => this.inSearchName = element} />
                         <Button color="primary" onClick={this.btSearch}>Search</Button>
-                    </div>
-                    <div style={{ width: "250px", display: "flex" }}>
-                        <Input type="select" style={{ width: "250px", float: "right" }} innerRef={(element) => this.inSearchCategory = element}>
+                    </InputGroup>
+                </div>
+                <div className="row" style={{ width: "250px", display: "flex" }}>
+                    <Label style={{ width: "250px" }}>Filter By Category</Label>
+                    <InputGroup style={{ width: "250px", float: "left" }}>
+                        <Input type="select" innerRef={(element) => this.inSearchCategory = element}>
                             <option> </option>
                             {
                                 this.state.booksCategory &&
@@ -93,19 +89,22 @@ class BookListPage extends React.Component {
                             }
                         </Input>
                         <Button color="primary" onClick={this.btSearch}>Filter</Button>
-                    </div>
-                    <div style={{ width: "250px", display: "flex" }}>
+                    </InputGroup>
+                </div>
+                <div className="row" style={{ width: "250px", display: "flex" }}>
+                    <Label style={{ width: "250px" }}>Sort</Label>
+                    <InputGroup>
                         <Input type="select" innerRef={(element) => this.inSearchSort = element}>
                             <option> </option>
                             <option value="nama-asc">A-Z</option>
                             <option value="nama-desc">Z-A</option>
                             <option value="id-asc">Reset</option>
                         </Input>
-                        <Button style={{ marginLeft: "10px" }} color="primary" onClick={this.btSort}>Sort</Button>
-                    </div>
-                    <div>
-                        <Button outline color="warning" onClick={this.btReset}>Reset</Button>
-                    </div>
+                        <Button color="primary" onClick={this.btSort}>Sort</Button>
+                    </InputGroup>
+                </div>
+                <div>
+                    <Button outline color="warning" onClick={this.btReset}>Reset</Button>
                 </div>
             </div>
         )
@@ -115,10 +114,10 @@ class BookListPage extends React.Component {
         let { page } = this.state
         return this.props.booksList.slice(page > 1 ? (page - 1) * 6 : page - 1, page * 6).map((value, index) => {
             return <div className="col-3 m-4" style={{ textAlign: "center" }}>
-                <CardGroup>
+                <CardGroup onClick={() => this.setState({ detailBook: value, openModal: !this.state.openModal, selectedIdx: index })}>
                     <Card className="shadow">
                         <div style={{ padding: "20px" }}>
-                            <img onClick={() => this.setState({ detailBook: value, openModal: !this.state.openModal, selectedIdx: index })} alt='...' src={value.image} width="50%" />
+                            <img alt='...' src={value.image} width="50%" />
                         </div>
                         <CardBody>
                             <CardTitle tag="h5">
@@ -133,13 +132,15 @@ class BookListPage extends React.Component {
                             {
                                 this.props.username
                                     ?
-                                    <></>
+                                    <>
+                                        <Link to={`/rent?id=${value.id}`}>
+                                            <Button color="primary">Click here to Rent this Book</Button>
+                                        </Link>
+                                    </>
                                     :
-                                    <></>
+                                    <>
+                                    </>
                             }
-                            <Link to={`/rent?id=${value.id}`}>
-                                <Button color="primary">Click here to Rent this Book</Button>
-                            </Link>
                         </CardBody>
                     </Card>
                 </CardGroup>
@@ -167,27 +168,17 @@ class BookListPage extends React.Component {
                     openModal={this.state.openModal}
                     toggleModal={() => this.setState({ openModal: !this.state.openModal })}
                 />
-                <div className="row" style={{ justifyContent: "center", width: "99vw" }} >
-                    <div style={{ justifyContent: "center", display: "flex" }}>
-                        <p style={{ marginTop: "30px" }} onClick={() => this.setState({ collapseIsOpen: !this.state.collapseIsOpen })}>
-                            {
-                                this.state.collapseIsOpen === true
-                                    ?
-                                    <Button onClick={this.btReset} color='warning' >
-                                        Close Search
-                                    </Button>
-                                    :
-                                    <Button color='primary'>
-                                        Seach Book
-                                    </Button>
-
-                            }
-                        </p>
+                <div className="row" style={{ display: "flex", width:"99vw" }}>
+                    <div className='col-1'>
                     </div>
-                    <Collapse isOpen={this.state.collapseIsOpen}>
+                    <div className='col-2'>
                         {this.printSort()}
-                    </Collapse>
-                    {this.printBooks()}
+                    </div>
+                    <div className='col-9'>
+                        <div className='row' style={{ display: "flex" }}>
+                            {this.printBooks()}
+                        </div>
+                    </div>
                 </div>
                 <div className="text-center">
                     <ButtonGroup>
@@ -199,9 +190,10 @@ class BookListPage extends React.Component {
     }
 }
 
-const mapToProps = ({ bookReducer }) => {
+const mapToProps = ({ bookReducer, userReducer }) => {
     return {
-        booksList: bookReducer.booksList
+        booksList: bookReducer.booksList,
+        username: userReducer.username
     }
 }
 

@@ -100,6 +100,36 @@
         }
       ],
       "id": 3
+    },
+    {
+      "username": "test2",
+      "email": "test2@mail.com",
+      "password": "test2",
+      "role": "user",
+      "status": "Active",
+      "book": [
+        {
+          "title": "The ALCHEMIST",
+          "author": "Paulo Coelho",
+          "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/12/10/batch-upload/batch-upload_5163a8c7-7ab2-4488-922c-6d2e69d7c742.jpeg",
+          "category": "Fiction",
+          "desc": "From his home in Spain he journeys to the markets of Tangiers and across the Egyptian desert to a fateful encounter with the alchemist.The story of the treasures Santiago finds along the way teaches usas only a few stories have doneabout the essential wisdom of listening to our heartslearning to read the omens strewn along life's pathandabove allfollowing our dreams.",
+          "startDate": "1/5/2022",
+          "day": 3,
+          "endDate": "1/8/2022"
+        },
+        {
+          "title": "The Psychology of Money",
+          "author": "Morgan Housel",
+          "image": "https://images.tokopedia.net/img/cache/900/VqbcmM/2021/1/28/053a8508-9fad-42be-822d-6f9c8583135f.png",
+          "category": "Business",
+          "desc": "Doing well with money isn't necessarily about what you know. It's about how you behave. And behavior is hard to teach, even to really smart people.",
+          "startDate": "1/5/2022",
+          "day": 7,
+          "endDate": "1/12/2022"
+        }
+      ],
+      "id": 4
     }
   ],
   "books": [

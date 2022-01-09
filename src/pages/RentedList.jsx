@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Button, Table } from 'reactstrap';
 import ModalDetail from '../component/ModalDetail';
 import { API_URL } from '../helper';
-
+import { updateUserBook } from '../redux/actions/userAction';
 
 class RentedListPage extends React.Component {
     constructor(props) {
@@ -17,14 +17,24 @@ class RentedListPage extends React.Component {
         }
     }
 
-    componentDidMount() {
-        console.log("CEK URL DETAIL PAGE:", window.location)
-        axios.get(`${API_URL}/dataUser/${this.props.iduser}`)
-            .then((response) => {
-                this.setState({ detail: response.data })
-                this.setState({ books: this.state.detail.book })
-                console.log("detail", this.state.detail)
-                console.log("books Array", this.state.books)
+    // componentDidMount() {
+    //     console.log("CEK URL DETAIL PAGE:", window.location)
+    //     axios.get(`${API_URL}/dataUser/${this.props.iduser}`)
+    //         .then((response) => {
+    //             this.setState({ detail: response.data })
+    //             this.setState({ books: this.state.detail.book })
+    //             console.log("detail", this.state.detail)
+    //             console.log("books Array", this.state.books)
+    //         }).catch((err) => {
+    //             console.log(err)
+    //         })
+    // }
+
+    onBtRemove = (index) => {
+        this.props.book.splice(index, 1)
+        axios.patch(`${API_URL}/dataUser/${this.props.iduser}`, { book: this.props.book })
+            .then((res) => {
+                this.props.updateUserBook(res.data.book)
             }).catch((err) => {
                 console.log(err)
             })
@@ -33,8 +43,8 @@ class RentedListPage extends React.Component {
     printMyBook = () => {
         let { number } = this.state
         number = 0
-        return this.state.detail.book &&
-            this.state.detail.book.map((value, index) => {
+        return this.props.book &&
+            this.props.book.map((value, index) => {
                 return (
                     <tbody style={{ textAlign: "center", margin: "auto" }}>
                         <tr>
@@ -62,7 +72,7 @@ class RentedListPage extends React.Component {
                             <td width="200px">
                                 <div style={{ display: "flex", justifyContent: "space-around" }}>
                                     <Button onClick={() => this.setState({ books: value, openModal: !this.state.openModal, selectedIdx: index })}>Detail Book</Button>
-                                    <Button>Return Book</Button>
+                                    <Button onClick={() => this.onBtRemove(index)}>Return Book</Button>
                                 </div>
                             </td>
                         </tr>
@@ -119,8 +129,9 @@ class RentedListPage extends React.Component {
 
 const mapToProps = (state) => {
     return {
-        iduser: state.userReducer.id
+        iduser: state.userReducer.id,
+        book: state.userReducer.book
     }
 }
 
-export default connect(mapToProps)(RentedListPage);
+export default connect(mapToProps, { updateUserBook })(RentedListPage);

@@ -20,6 +20,8 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 status: action.payload.status,
                 book: action.payload.book
             }
+        case "UPDATE_BOOK_USER":
+            return { ...state, book: action.payload }
         case "LOGOUT":
             return INITIAL_STATE
         default:

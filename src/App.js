@@ -13,6 +13,7 @@ import RentedListPage from "./pages/RentedList";
 import NotFoundPage from "./pages/NotFound";
 import RentPage from "./pages/Rent";
 import BookManagementPage from "./pages/BookManagement";
+import BooksOnRentPage from "./pages/BooksOnRent";
 
 class App extends React.Component {
   constructor(props) {
@@ -66,6 +67,7 @@ class App extends React.Component {
                 ?
                 <>
                   <Route path="/bookmanagement" element={<BookManagementPage />} />
+                  <Route path="/booksonrent" element={<BooksOnRentPage />} />
                 </>
                 :
                 <Route path="*" element={<NotFoundPage />} />

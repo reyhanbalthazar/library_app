@@ -16,7 +16,7 @@ class HomePage extends React.Component {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            style={{borderRadius:20}}
+                            style={{borderRadius:30}}
                             src="https://images.unsplash.com/photo-1588580000645-4562a6d2c839?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                             alt="First slide"
                         />
@@ -28,7 +28,7 @@ class HomePage extends React.Component {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            style={{borderRadius:20}}
+                            style={{borderRadius:30}}
                             src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                             alt="Second slide"
                         />
@@ -41,7 +41,7 @@ class HomePage extends React.Component {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            style={{borderRadius:20}}
+                            style={{borderRadius:30}}
                             src="https://images.unsplash.com/photo-1549675584-91f19337af3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80"
                             alt="Third slide"
                         />
@@ -60,10 +60,10 @@ class HomePage extends React.Component {
         return (
             <div>
                 <div>
-                    <img style={{ width: "27vw", borderRadius:30 }} alt="..." src="https://images.unsplash.com/photo-1544716278-e513176f20b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" />
+                    <img style={{ width: "25vw", borderRadius: 30 }} alt="..." src="https://images.unsplash.com/photo-1544716278-e513176f20b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" />
                 </div>
-                <div style={{marginTop:"10px"}}>
-                    <img style={{ width: "27vw", borderRadius:30 }} alt="..." src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" />
+                <div style={{ marginTop: "10px" }}>
+                    <img style={{ width: "25vw", borderRadius: 30 }} alt="..." src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" />
                 </div>
             </div>
         )
@@ -72,11 +72,11 @@ class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <div style={{ width: "90vw", display:"flex", paddingTop:"120px", margin:"auto"  }}>
-                    <div>
+                <div className='row' style={{ width: "90vw", paddingTop: "120px", margin: "auto" }}>
+                    <div className='col-8'>
                         {this.printCarousel()}
                     </div>
-                    <div style={{marginLeft:"20px"}}>
+                    <div className='col-3' style={{ margin:"auto"}}>
                         {this.printImage()}
                     </div>
                 </div>

@@ -29,7 +29,7 @@ class NavbarComponent extends React.Component {
                                 <Nav className="me-auto">
 
                                 </Nav>
-                                <Nav>
+                                <Nav style={{fontWeight:"bold"}}>
                                     <NavItem>
                                         <Link to="/bookslist" className="nav-link" style={{ color: "#2d3436" }}>
                                             Books
@@ -80,6 +80,11 @@ class NavbarComponent extends React.Component {
                                         <NavItem>
                                             <Link to="/bookmanagement" className="nav-link" style={{ color: "#2d3436" }}>
                                                 Book Management
+                                            </Link>
+                                        </NavItem>
+                                        <NavItem>
+                                            <Link to="/booksonrent" className="nav-link" style={{ color: "#2d3436" }}>
+                                                Book On Rent
                                             </Link>
                                         </NavItem>
                                         <NavItem>

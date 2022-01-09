@@ -22,31 +22,19 @@
           "image": "https://images.tokopedia.net/img/cache/900/VqbcmM/2021/1/28/053a8508-9fad-42be-822d-6f9c8583135f.png",
           "category": "Business",
           "desc": "Doing well with money isn't necessarily about what you know. It's about how you behave. And behavior is hard to teach, even to really smart people.",
-          "day": 3
+          "startDate": "1/9/2022",
+          "day": 3,
+          "endDate": "1/12/2022"
         },
         {
-          "title": "The ALCHEMIST",
-          "author": "Paulo Coelho",
-          "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/12/10/batch-upload/batch-upload_5163a8c7-7ab2-4488-922c-6d2e69d7c742.jpeg",
-          "category": "Fiction",
-          "desc": "From his home in Spain he journeys to the markets of Tangiers and across the Egyptian desert to a fateful encounter with the alchemist.The story of the treasures Santiago finds along the way teaches usas only a few stories have doneabout the essential wisdom of listening to our heartslearning to read the omens strewn along life's pathandabove allfollowing our dreams.",
-          "day": 7
-        },
-        {
-          "title": "Norwegian Wood",
-          "author": "Haruki Murakami",
-          "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/10/8/2573453/2573453_5f85cd0b-b903-47f3-9ca8-f38c0b7f91fb.jpeg",
-          "category": "Fiction",
-          "desc": "First American Publication This stunning and elegiac novel by the author of the internationally acclaimed Wind-Up Bird Chronicle has sold over 4 million copies in Japan and is now available to American audiences for the first time. It is sure to be a literary event.",
-          "day": 14
-        },
-        {
-          "title": "Tuesdays with Morrie",
-          "author": "Mitch Albom",
-          "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/12/10/batch-upload/batch-upload_3b2a28f7-1812-42f3-ba8b-f1f0935cd497.jpeg",
-          "category": "Fiction",
-          "desc": "Maybe it was a grandparentor a teacheror a colleague.  Someone olderpatient and wisewho understood you when you were young and searchinghelped you see the world as a more profound placegave you sound advice to help you make your way through it.",
-          "day": 7
+          "title": "12 Rules for Life : An Antidote to Chaos",
+          "author": "Jordan B. Peterson",
+          "image": "https://images.tokopedia.net/img/cache/900/product-1/2020/10/2/23287724/23287724_dac3077b-d723-46d4-b20c-e0290f69a61b_800_800",
+          "category": "Psychology",
+          "desc": "What does everyone in the modern world need to know? Renowned psychologist Jordan B. Peterson's answer to this most difficult of questions uniquely combines the hard-won truths of ancient tradition with the stunning revelations of cutting-edge scientific research.Humoroussurprising and informativeDr. Peterson tells us why skateboarding boys and girls must be left alonewhat terrible fate awaits those who criticize too easilyand why you should always pet a cat when you meet one on the street.",
+          "startDate": "1/9/2022",
+          "day": 3,
+          "endDate": "1/12/2022"
         }
       ],
       "id": 2
@@ -59,44 +47,14 @@
       "status": "Active",
       "book": [
         {
-          "title": "Norwegian Wood",
-          "author": "Haruki Murakami",
-          "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/10/8/2573453/2573453_5f85cd0b-b903-47f3-9ca8-f38c0b7f91fb.jpeg",
-          "category": "Fiction",
-          "desc": "First American Publication This stunning and elegiac novel by the author of the internationally acclaimed Wind-Up Bird Chronicle has sold over 4 million copies in Japan and is now available to American audiences for the first time. It is sure to be a literary event.",
-          "startDate": "1/1/2022",
-          "day": 7,
-          "endDate": "1/8/2022"
-        },
-        {
-          "title": "The Psychology of Money",
-          "author": "Morgan Housel",
-          "image": "https://images.tokopedia.net/img/cache/900/VqbcmM/2021/1/28/053a8508-9fad-42be-822d-6f9c8583135f.png",
-          "category": "Business",
-          "desc": "Doing well with money isn't necessarily about what you know. It's about how you behave. And behavior is hard to teach, even to really smart people.",
-          "startDate": "1/1/2022",
-          "day": 7,
-          "endDate": "1/8/2022"
-        },
-        {
           "title": "The ALCHEMIST",
           "author": "Paulo Coelho",
           "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/12/10/batch-upload/batch-upload_5163a8c7-7ab2-4488-922c-6d2e69d7c742.jpeg",
           "category": "Fiction",
           "desc": "From his home in Spain he journeys to the markets of Tangiers and across the Egyptian desert to a fateful encounter with the alchemist.The story of the treasures Santiago finds along the way teaches usas only a few stories have doneabout the essential wisdom of listening to our heartslearning to read the omens strewn along life's pathandabove allfollowing our dreams.",
-          "startDate": "1/4/2022",
-          "day": 7,
-          "endDate": "1/11/2022"
-        },
-        {
-          "title": "Before the Coffee Gets Cold",
-          "author": "Kawaguchi, Toshikazu",
-          "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/10/10/2573453/2573453_df8ff24a-8cda-4076-b078-ea7882b3b779.jpeg",
-          "category": "Fiction",
-          "desc": "In a small back alley in Tokyo, there is a cafe which has been serving carefully brewed coffee for more than one hundred years. But this coffee shop offers its customers a unique experience: the chance to travel back in time.",
-          "startDate": "1/4/2022",
+          "startDate": "1/9/2022",
           "day": 3,
-          "endDate": "1/7/2022"
+          "endDate": "1/12/2022"
         }
       ],
       "id": 3
@@ -155,12 +113,12 @@
     },
     {
       "id": 2,
-      "title": "The ALCHEMIST",
+      "title": "The Alchemist",
       "author": "Paulo Coelho",
       "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/12/10/batch-upload/batch-upload_5163a8c7-7ab2-4488-922c-6d2e69d7c742.jpeg",
       "category": "Fiction",
       "desc": "From his home in Spain he journeys to the markets of Tangiers and across the Egyptian desert to a fateful encounter with the alchemist.The story of the treasures Santiago finds along the way teaches usas only a few stories have doneabout the essential wisdom of listening to our heartslearning to read the omens strewn along life's pathandabove allfollowing our dreams.",
-      "year": "2014",
+      "year": "2020",
       "option": [
         {
           "day": 3
@@ -180,7 +138,7 @@
       "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/10/8/2573453/2573453_5f85cd0b-b903-47f3-9ca8-f38c0b7f91fb.jpeg",
       "category": "Fiction",
       "desc": "First American Publication This stunning and elegiac novel by the author of the internationally acclaimed Wind-Up Bird Chronicle has sold over 4 million copies in Japan and is now available to American audiences for the first time. It is sure to be a literary event.",
-      "year": "2011",
+      "year": "2021",
       "option": [
         {
           "day": 3

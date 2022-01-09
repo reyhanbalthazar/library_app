@@ -1,7 +1,7 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { API_URL } from '../helper';
-import { Card, CardBody, CardTitle, CardSubtitle, CardGroup, Button, ButtonGroup, Input, InputGroup, Label, Collapse } from 'reactstrap'
+import { Card, CardBody, CardTitle, CardSubtitle, CardGroup, Button, ButtonGroup, Input, InputGroup, Label } from 'reactstrap'
 import { connect } from 'react-redux';
 import ModalRent from '../component/ModalRent';
 import { Link } from 'react-router-dom';
@@ -19,7 +19,6 @@ class BookListPage extends React.Component {
             collapseIsOpen: false
         }
     }
-
 
     getData = () => {
         axios.get(`${API_URL}/booksCategory`)
@@ -64,18 +63,18 @@ class BookListPage extends React.Component {
 
     printSort = () => {
         return (
-            <div style={{ marginTop: "20px" }}>
-                <div className="row" style={{ width: "250px", display: "flex" }}>
-                    <InputGroup style={{ width: "250px", float: "left" }}>
-                        <Label style={{ width: "250px" }}>Search by Title</Label>
+            <div className="shadow p-3" style={{ marginTop: "30px" }}>
+                <div className="row" style={{ display: "flex" }}>
+                    <InputGroup style={{ width: "250px" }}>
+                        <Label style={{ width: "250px", fontWeight: "bold" }}>Search by Title</Label>
                         <Input type="text" id="text" placeholder="Search By Title"
                             innerRef={(element) => this.inSearchName = element} />
-                        <Button color="primary" onClick={this.btSearch}>Search</Button>
+                        <Button style={{ width: "70px" }} color="primary" onClick={this.btSearch}>Search</Button>
                     </InputGroup>
                 </div>
-                <div className="row" style={{ width: "250px", display: "flex" }}>
-                    <Label style={{ width: "250px" }}>Filter By Category</Label>
-                    <InputGroup style={{ width: "250px", float: "left" }}>
+                <div className="row" style={{ display: "flex", marginTop: "10px" }}>
+                    <Label onClick={() => this.setState({ collapseIsOpen: !this.state.collapseIsOpen })} style={{ width: "250px", fontWeight: "bold" }}>Filter By Category</Label>
+                    <InputGroup style={{ width: "250px" }}>
                         <Input type="select" innerRef={(element) => this.inSearchCategory = element}>
                             <option> </option>
                             {
@@ -88,22 +87,22 @@ class BookListPage extends React.Component {
                                 })
                             }
                         </Input>
-                        <Button color="primary" onClick={this.btSearch}>Filter</Button>
+                        <Button style={{ width: "70px" }} color="primary" onClick={this.btSearch}>Filter</Button>
                     </InputGroup>
                 </div>
-                <div className="row" style={{ width: "250px", display: "flex" }}>
-                    <Label style={{ width: "250px" }}>Sort</Label>
-                    <InputGroup>
+                <div className="row" style={{ display: "flex", marginTop: "10px" }}>
+                    <Label style={{ width: "250px", fontWeight: "bold" }}>Sort</Label>
+                    <InputGroup style={{ width: "250px" }}>
                         <Input type="select" innerRef={(element) => this.inSearchSort = element}>
                             <option> </option>
                             <option value="nama-asc">A-Z</option>
                             <option value="nama-desc">Z-A</option>
                             <option value="id-asc">Reset</option>
                         </Input>
-                        <Button color="primary" onClick={this.btSort}>Sort</Button>
+                        <Button style={{ width: "70px" }} color="primary" onClick={this.btSort}>Sort</Button>
                     </InputGroup>
                 </div>
-                <div>
+                <div style={{ marginTop: "10px" }}>
                     <Button outline color="warning" onClick={this.btReset}>Reset</Button>
                 </div>
             </div>
@@ -130,7 +129,7 @@ class BookListPage extends React.Component {
                                 {value.category}
                             </CardSubtitle>
                             {
-                                this.props.username
+                                this.props.role === "user"
                                     ?
                                     <>
                                         <Link to={`/rent?id=${value.id}`}>
@@ -164,11 +163,11 @@ class BookListPage extends React.Component {
         return (
             <div style={{ marginTop: "70px", marginBottom: "70px" }}>
                 <ModalRent
-                    detailBook={this.state.detailBook}
                     openModal={this.state.openModal}
+                    detailBook={this.state.detailBook}
                     toggleModal={() => this.setState({ openModal: !this.state.openModal })}
                 />
-                <div className="row" style={{ display: "flex", width:"99vw" }}>
+                <div className="row" style={{ display: "flex", width: "99vw" }}>
                     <div className='col-1'>
                     </div>
                     <div className='col-2'>
@@ -193,7 +192,8 @@ class BookListPage extends React.Component {
 const mapToProps = ({ bookReducer, userReducer }) => {
     return {
         booksList: bookReducer.booksList,
-        username: userReducer.username
+        username: userReducer.username,
+        role: userReducer.role
     }
 }
 

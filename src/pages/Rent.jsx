@@ -41,6 +41,7 @@ class RentPage extends React.Component {
                 endDate: new Date(Date.now() + (3600 * 1000 * (24 * selectedDay.day))).toLocaleDateString(),
             }
             let temp = [...this.props.book]
+            let date = new Date()
             temp.push(dataBook)
             if (this.props.iduser) {
                 axios.patch(`${API_URL}/dataUser/${this.props.iduser}`, {
@@ -52,6 +53,18 @@ class RentPage extends React.Component {
                 }).catch((error) => {
                     console.log(error)
                 })
+                // axios.post(`${API_URL}/userTransactions`, {
+                //     iduser: this.props.iduser,
+                //     username: this.props.username,
+                //     invoice: `#INV${date.getTime()}`,
+                //     date: date.toLocaleString(),
+                //     detail:[...this.props.book],
+                //     status:"On Rent"
+                // }).then((response) =>{
+                //     this.props.updateUserBook(this.props.iduser)
+                // }).catch((err)=> {
+                //     console.log(err)
+                // })
             }
         }
     }
@@ -115,7 +128,8 @@ class RentPage extends React.Component {
 const mapToProps = (state) => {
     return {
         book: state.userReducer.book,
-        iduser: state.userReducer.id
+        iduser: state.userReducer.id,
+        username: state.userReducer.username
     }
 }
 

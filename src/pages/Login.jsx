@@ -47,7 +47,7 @@ class LoginPage extends React.Component {
                     this.setState({ loginAlertIsOpen: true }, () => {
                         window.setTimeout(() => {
                             this.setState({ loginAlertIsOpen: false })
-                            window.location = 'http://localhost:3000/';
+                            window.location = '/';
                         }, 1000)
                     })
                 } else {

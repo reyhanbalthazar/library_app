@@ -47,7 +47,7 @@ class LoginPage extends React.Component {
                     this.setState({ loginAlertIsOpen: true }, () => {
                         window.setTimeout(() => {
                             this.setState({ loginAlertIsOpen: false })
-                            window.location = '/';
+                            // window.location = '/';
                         }, 1000)
                     })
                 } else {
@@ -79,9 +79,9 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        // if (this.props.iduser) {
-        //     return <Navigate to="/" />
-        // }
+        if (this.props.iduser) {
+            return <Navigate to="/" />
+        }
         return (
             <div style={{ marginTop: "100px" }}>
                 <div className="row">

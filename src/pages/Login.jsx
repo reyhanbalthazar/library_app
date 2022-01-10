@@ -4,6 +4,7 @@ import { loginAction } from '../redux/actions/userAction';
 import { Alert, Button, FormGroup, Input, InputGroup, InputGroupText, Label} from 'reactstrap';
 import axios from 'axios';
 import { API_URL } from '../helper';
+import { Navigate } from 'react-router-dom';
 
 class LoginPage extends React.Component {
     constructor(props) {

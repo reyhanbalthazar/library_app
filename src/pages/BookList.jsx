@@ -119,6 +119,9 @@ class BookListPage extends React.Component {
                             <img alt='...' src={value.image} width="50%" />
                         </div>
                         <CardBody>
+                            <CardSubtitle>
+                                {value.author}
+                            </CardSubtitle>
                             <CardTitle tag="h5">
                                 {value.title}
                             </CardTitle>

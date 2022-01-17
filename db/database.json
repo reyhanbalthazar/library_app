@@ -15,28 +15,7 @@
       "password": "test",
       "role": "user",
       "status": "Active",
-      "book": [
-        {
-          "title": "The Psychology of Money",
-          "author": "Morgan Housel",
-          "image": "https://images.tokopedia.net/img/cache/900/VqbcmM/2021/1/28/053a8508-9fad-42be-822d-6f9c8583135f.png",
-          "category": "Business",
-          "desc": "Doing well with money isn't necessarily about what you know. It's about how you behave. And behavior is hard to teach, even to really smart people.",
-          "startDate": "1/9/2022",
-          "day": 3,
-          "endDate": "1/12/2022"
-        },
-        {
-          "title": "12 Rules for Life : An Antidote to Chaos",
-          "author": "Jordan B. Peterson",
-          "image": "https://images.tokopedia.net/img/cache/900/product-1/2020/10/2/23287724/23287724_dac3077b-d723-46d4-b20c-e0290f69a61b_800_800",
-          "category": "Psychology",
-          "desc": "What does everyone in the modern world need to know? Renowned psychologist Jordan B. Peterson's answer to this most difficult of questions uniquely combines the hard-won truths of ancient tradition with the stunning revelations of cutting-edge scientific research.Humoroussurprising and informativeDr. Peterson tells us why skateboarding boys and girls must be left alonewhat terrible fate awaits those who criticize too easilyand why you should always pet a cat when you meet one on the street.",
-          "startDate": "1/9/2022",
-          "day": 3,
-          "endDate": "1/12/2022"
-        }
-      ],
+      "book": [],
       "id": 2
     },
     {

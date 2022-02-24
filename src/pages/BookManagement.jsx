@@ -87,8 +87,8 @@ class BookManagementPage extends React.Component {
                     toggleModal={() => this.setState({ openModalAdd: !this.state.openModalAdd })}
                     btClose={() => this.setState({ modalAddOpen: !this.state.modalAddOpen })}
                 />
-                <div className='container btn'>
-                    <Button onClick={() => this.setState({ openModalAdd: !this.state.openModalAdd })} color='primary'>ADD</Button>
+                <div style={{ textAlign: "center" }}>
+                    <Button onClick={() => this.setState({ openModalAdd: !this.state.openModalAdd })} color='primary'>ADD BOOKS</Button>
                 </div>
                 <div className="row" style={{ justifyContent: "center", width: "99vw" }} >
                     {this.printBooks()}

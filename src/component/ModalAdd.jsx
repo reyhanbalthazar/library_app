@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 import { API_URL } from '../helper';
+import { getBookAction } from '../redux/actions/bookAction';
 
 class ModalAdd extends React.Component {
     constructor(props) {
@@ -30,6 +31,8 @@ class ModalAdd extends React.Component {
             .then(res => {
                 console.log("res.data", res.data)
                 alert("Add Product Success")
+                this.props.toggleModal()
+                this.props.getBookAction()
             }).catch(err => {
                 console.log(err)
             })
@@ -56,9 +59,7 @@ class ModalAdd extends React.Component {
     }
 
     handleImages = (e) => {
-        let temp = [...this.state.images]
-        temp = { name: e.target.files[0].name, file: e.target.files[0] }
-        this.setState({ images: temp })
+        this.setState({ images: { name: e.target.files[0].name, file: e.target.files[0] } })
     }
 
     render() {
@@ -70,7 +71,7 @@ class ModalAdd extends React.Component {
                         <div style={{ margin: "auto", paddingRight: "60px" }}>
                             <FormGroup>
                                 <Label for="textTitle">Title</Label>
-                                <Input type="text" id="textNama" style={{width:"400px"}} innerRef={elemen => this.inTitle = elemen} />
+                                <Input type="text" id="textNama" style={{ width: "400px" }} innerRef={elemen => this.inTitle = elemen} />
                             </FormGroup>
                             <FormGroup>
                                 <Label for="textAuthor">Author</Label>
@@ -109,12 +110,12 @@ class ModalAdd extends React.Component {
                                 <Label>Images</Label>
                                 {
                                     this.state.images.file ?
-                                    <img alt="img" width="600vh" src={URL.createObjectURL(this.state.images.file)} />
-                                    :
-                                    <img alt="img" width="600vh" src='https://pertaniansehat.com/v01/wp-content/uploads/2015/08/default-placeholder.png' />
+                                        <img alt="img" width="600vh" src={URL.createObjectURL(this.state.images.file)} />
+                                        :
+                                        <img alt="img" width="600vh" src='https://pertaniansehat.com/v01/wp-content/uploads/2015/08/default-placeholder.png' />
                                 }
                                 {this.printImages()}
-                                <Input style={{marginTop:"20px"}} type='file' onChange={(e) => this.handleImages(e)} >Browse Image</Input>
+                                <Input style={{ marginTop: "20px" }} type='file' onChange={(e) => this.handleImages(e)} >Browse Image</Input>
                             </FormGroup>
                         </div>
                     </div>
@@ -130,4 +131,4 @@ const mapToProps = (state) => {
     }
 }
 
-export default connect(mapToProps)(ModalAdd);
+export default connect(mapToProps, { getBookAction })(ModalAdd);

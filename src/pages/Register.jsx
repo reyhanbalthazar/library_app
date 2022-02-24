@@ -32,7 +32,7 @@ class RegisterPage extends React.Component {
         } else {
             if (this.password.value === this.confPassword.value) {
                 if (this.email.value.includes("@")) {
-                    axios.post(`${API_URL}/dataUser`, {
+                    axios.post(`${API_URL}/datauser/regis`, {
                         username: this.username.value,
                         email: this.email.value,
                         password: this.password.value,
@@ -43,7 +43,8 @@ class RegisterPage extends React.Component {
                         this.setState({ registerAlertIsOpen: true }, () => {
                             window.setTimeout(() => {
                                 this.setState({ registerAlertIsOpen: false })
-                                window.location = 'http://localhost:3000/login';
+                                // window.location = 'http://localhost:3000/login';
+                                alert("Register Berhasil")
                             }, 2000)
                         })
                     }).catch((error) => {

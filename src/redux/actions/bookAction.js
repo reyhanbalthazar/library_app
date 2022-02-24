@@ -8,6 +8,18 @@ export const getBookAction = (search = null, searchCategory = null) => {
             let res;
             console.log("cek SEARCH Title", search)
             console.log("cek SEARCH Category", searchCategory)
+
+
+            // if (search) {
+            //     if (searchCategory) {
+            //         res = await axios.get(`${API_URL}/books?category=${searchCategory}`)
+            //     } else {
+            //         res = await axios.get(`${API_URL}/books?title=${search}`)
+            //     }
+            // } else {
+            //     res = await axios.get(`${API_URL}/books`)
+            // }
+
             if (search) {
                 console.log("cek SEARCH Title", search)
                 res = await axios.get(`${API_URL}/books?title=${search}`)
@@ -30,7 +42,21 @@ export const getBookAction = (search = null, searchCategory = null) => {
             }
             dispatch({
                 type: "GET_BOOKS_SUCCESS",
-                payload: res.data
+                payload: res.data.dataBooks
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const getCategory = () => {
+    return async (dispatch) => {
+        try {
+            let resCategory = await axios.get(`${API_URL}/books/getcategory`);
+            dispatch({
+                type: "GET_DATA_CATEGORY",
+                payload: resCategory.data.categoryList 
             })
         } catch (error) {
             console.log(error)

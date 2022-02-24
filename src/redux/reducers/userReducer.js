@@ -18,7 +18,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
                 email: action.payload.email,
                 role: action.payload.role,
                 status: action.payload.status,
-                book: action.payload.book
+                // book: action.payload.book
             }
         case "UPDATE_BOOK_USER":
             return { ...state, book: action.payload }

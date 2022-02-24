@@ -80,7 +80,7 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        if (this.props.iduser) {
+        if (this.props.username) {
             return <Navigate to="/" />
         }
         return (
@@ -141,7 +141,7 @@ class LoginPage extends React.Component {
 
 const mapToProps = (state) => {
     return {
-        iduser: state.userReducer.id,
+        username: state.userReducer.username,
         email: state.userReducer.email
     }
 }

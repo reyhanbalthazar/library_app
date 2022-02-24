@@ -6,14 +6,16 @@ import HomePage from "./pages/Home";
 import LoginPage from "./pages/Login"
 import RegisterPage from "./pages/Register";
 import { connect } from "react-redux";
-import { loginAction } from "./redux/actions/userAction"
-import { getBookAction } from "./redux/actions/bookAction";
+import { keepAction, loginAction } from "./redux/actions/userAction"
+import { getBookAction, getCategory } from "./redux/actions/bookAction";
 import BookListPage from "./pages/BookList";
 import RentedListPage from "./pages/RentedList";
 import NotFoundPage from "./pages/NotFound";
 import RentPage from "./pages/Rent";
 import BookManagementPage from "./pages/BookManagement";
 import BooksOnRentPage from "./pages/BooksOnRent";
+import FooterComponent from "./component/Footer";
+import VerificationPage from './pages/VerificationPage';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,20 +28,23 @@ class App extends React.Component {
   componentDidMount() {
     this.keepLogin()
     this.props.getBookAction()
+    this.props.getCategory()
   }
 
   keepLogin = async () => {
     try {
-      let local = localStorage.getItem("data")
-      if (local) {
-        local = JSON.parse(local)
-        let response = await this.props.loginAction(local.email, local.password)
-        if (response.success) {
-          this.setState({ loading: false })
-        }
-      } else {
-        this.setState({ loading: false })
-      }
+      await this.props.keepAction()
+      this.setState({ loading: false })
+      // let local = localStorage.getItem("data")
+      // if (local) {
+      //   local = JSON.parse(local)
+      //   let response = await this.props.loginAction(local.email, local.password)
+      //   if (response.success) {
+      //     this.setState({ loading: false })
+      //   }
+      // } else {
+      //   this.setState({ loading: false })
+      // }
     } catch (error) {
       console.log(error)
       this.setState({ loading: false })
@@ -56,6 +61,7 @@ class App extends React.Component {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/aboutus" element={<AboutPage />} />
           <Route path="/bookslist" element={<BookListPage />} />
+          <Route path="/verification/:token" element={<VerificationPage />} />
           {
             this.props.role === "user"
               ?
@@ -74,6 +80,7 @@ class App extends React.Component {
           }
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        <FooterComponent />
       </div>
     )
   }
@@ -85,4 +92,4 @@ const mapToProps = (state) => {
   }
 }
 
-export default connect(mapToProps, { loginAction, getBookAction })(App);
+export default connect(mapToProps, { loginAction, getBookAction, keepAction, getCategory })(App);

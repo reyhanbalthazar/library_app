@@ -4,15 +4,15 @@ import { FormGroup, Label, Modal, ModalBody, ModalHeader } from 'reactstrap';
 class ModalDetail extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
 
-         }
+        }
     }
 
-    render() { 
-        let { title, image, category, desc } = this.props.books
-        return ( 
-                <Modal isOpen={this.props.openModal} toggle={this.props.toggleModal}>
+    render() {
+        let { title, image, category, description } = this.props.books
+        return (
+            <Modal isOpen={this.props.openModal} toggle={this.props.toggleModal}>
                 <ModalHeader style={{ justifyContent: "center" }}>Book Detail</ModalHeader>
                 <ModalBody style={{ textAlign: "center" }}>
                     <div>
@@ -29,12 +29,12 @@ class ModalDetail extends React.Component {
                     <hr />
                     <FormGroup className="border rounded p-3">
                         <Label style={{ fontWeight: "bold" }}>Description</Label>
-                        <Label>{desc}</Label>
+                        <Label>{description}</Label>
                     </FormGroup>
                 </ModalBody>
             </Modal>
-         );
+        );
     }
 }
- 
+
 export default ModalDetail;

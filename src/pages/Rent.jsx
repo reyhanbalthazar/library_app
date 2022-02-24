@@ -41,7 +41,6 @@ class RentPage extends React.Component {
                 endDate: new Date(Date.now() + (3600 * 1000 * (24 * selectedDay.day))).toLocaleDateString(),
             }
             let temp = [...this.props.book]
-            let date = new Date()
             temp.push(dataBook)
             if (this.props.iduser) {
                 axios.patch(`${API_URL}/dataUser/${this.props.iduser}`, {
@@ -49,7 +48,7 @@ class RentPage extends React.Component {
                 }).then((response) => {
                     console.log("data cart", response.data)
                     this.props.updateUserBook(response.data.book)
-                    window.location = 'http://localhost:3000/rentedlist';
+                    alert("Success")
                 }).catch((error) => {
                     console.log(error)
                 })

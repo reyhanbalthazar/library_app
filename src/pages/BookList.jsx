@@ -21,10 +21,10 @@ class BookListPage extends React.Component {
     }
 
     getData = () => {
-        axios.get(`${API_URL}/booksCategory`)
+        axios.get(`${API_URL}/books/getcategory`)
             .then((response) => {
                 console.log("response.data booksCategory", response.data)
-                this.setState({ booksCategory: response.data })
+                this.setState({ booksCategory: response.data.categoryList })
                 console.log("this.state.booksCategory", this.state.booksCategory)
             }).catch((error) => {
                 console.log(error)
@@ -63,9 +63,9 @@ class BookListPage extends React.Component {
 
     printSort = () => {
         return (
-            <div className="shadow p-3" style={{ marginTop: "30px" }}>
-                <div className="row" style={{ display: "flex" }}>
-                    <InputGroup style={{ width: "250px" }}>
+            <div className="shadow p-4 my-2" style={{ borderRadius:30 }}>
+                <div className="row" >
+                    <InputGroup style={{ width: "290px" }}>
                         <Label style={{ width: "250px", fontWeight: "bold" }}>Search by Title</Label>
                         <Input type="text" id="text" placeholder="Search By Title"
                             innerRef={(element) => this.inSearchName = element} />
@@ -74,7 +74,7 @@ class BookListPage extends React.Component {
                 </div>
                 <div className="row" style={{ display: "flex", marginTop: "10px" }}>
                     <Label onClick={() => this.setState({ collapseIsOpen: !this.state.collapseIsOpen })} style={{ width: "250px", fontWeight: "bold" }}>Filter By Category</Label>
-                    <InputGroup style={{ width: "250px" }}>
+                    <InputGroup style={{ width: "290px" }}>
                         <Input type="select" innerRef={(element) => this.inSearchCategory = element}>
                             <option> </option>
                             {
@@ -92,7 +92,7 @@ class BookListPage extends React.Component {
                 </div>
                 <div className="row" style={{ display: "flex", marginTop: "10px" }}>
                     <Label style={{ width: "250px", fontWeight: "bold" }}>Sort</Label>
-                    <InputGroup style={{ width: "250px" }}>
+                    <InputGroup style={{ width: "290px" }}>
                         <Input type="select" innerRef={(element) => this.inSearchSort = element}>
                             <option> </option>
                             <option value="nama-asc">A-Z</option>
@@ -112,9 +112,9 @@ class BookListPage extends React.Component {
     printBooks = () => {
         let { page } = this.state
         return this.props.booksList.slice(page > 1 ? (page - 1) * 6 : page - 1, page * 6).map((value, index) => {
-            return <div className="col-3 m-4" style={{ textAlign: "center" }}>
+            return <div className="col-3 my-2" style={{ textAlign: "center" }}>
                 <CardGroup onClick={() => this.setState({ detailBook: value, openModal: !this.state.openModal, selectedIdx: index })}>
-                    <Card className="shadow">
+                    <Card className="shadow" style={{ borderRadius: 30, height:"35vh" }}>
                         <div style={{ padding: "20px" }}>
                             <img alt='...' src={value.image} width="50%" />
                         </div>
@@ -164,16 +164,14 @@ class BookListPage extends React.Component {
 
     render() {
         return (
-            <div style={{ marginTop: "70px", marginBottom: "70px" }}>
+            <div style={{ marginTop: "100px" }}>
                 <ModalRent
                     openModal={this.state.openModal}
                     detailBook={this.state.detailBook}
                     toggleModal={() => this.setState({ openModal: !this.state.openModal })}
                 />
-                <div className="row" style={{ display: "flex", width: "99vw" }}>
-                    <div className='col-1'>
-                    </div>
-                    <div className='col-2'>
+                <div className="row" style={{ margin:"auto", paddingLeft:"5%", paddingRight:"5%" }}>
+                    <div className='col-3'>
                         {this.printSort()}
                     </div>
                     <div className='col-9'>
